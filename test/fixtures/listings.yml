@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  api_source: MyString
+  job_id: 1
+  user: one
+  company: one
+  active: false
+
+two:
+  api_source: MyString
+  job_id: 1
+  user: two
+  company: two
+  active: false

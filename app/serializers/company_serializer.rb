@@ -1,3 +1,4 @@
 class CompanySerializer < ActiveModel::Serializer
-  attributes :id, :name, :careers_url, :glassdoor_id, :status
+  has_many :listings
+  attributes :id, :name, :careers_url, :glassdoor_id, :status, :website, :description
 end

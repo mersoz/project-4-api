@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170416212002) do
+ActiveRecord::Schema.define(version: 20170419180118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20170416212002) do
     t.boolean  "status"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "website"
+    t.string   "description"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -40,8 +42,17 @@ ActiveRecord::Schema.define(version: 20170416212002) do
     t.integer  "user_id"
     t.integer  "company_id"
     t.boolean  "active"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "job_title"
+    t.string   "listing_company"
+    t.string   "location"
+    t.date     "date_posted"
+    t.string   "snippet"
+    t.string   "url"
+    t.string   "indeed_key"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["company_id"], name: "index_listings_on_company_id", using: :btree
     t.index ["user_id"], name: "index_listings_on_user_id", using: :btree
   end

@@ -1,3 +1,7 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :email, :password_digest, :first_name, :last_name, :industry, :country_of_origin, :seeking_work
+  attributes :id, :username, :full_name, :industry, :country_of_origin, :seeking_work
+
+  def full_name
+    "#{object.first_name} #{object.last_name}"
+  end
 end

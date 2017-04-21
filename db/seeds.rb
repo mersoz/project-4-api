@@ -524,71 +524,73 @@ end
 hundred_companies.each do |company|
   Company.create!(company)
 end
-#
-# [{
-#   subject: "Tier 2 Visa Info",
-#   body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-#   user_id: 1
-# }].each do |post|
-#   Post.create!(post)
-# end
-#
-# [{
-#   body: "Comment here for further questions! :)",
-#   user_id: 1,
-#   post_id: 1
-# }].each do |comment|
-#   Comment.create!(comment)
-# end
-#
-#
-# @start = 0
-# @results = {}
-#
-# def make_request
-#   HTTParty.get("http://api.indeed.com/ads/apisearch?&l=&sort=&radius=&st=&fromage=&filter=&latlong=1&&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2", {
-#     query: {
-#       format: "json",
-#       publisher: "4374475886375953",
-#       q: "(web or developer or java or ruby or python) company:(#{@companies_as_query})",
-#       co: "gb",
-#       start: @start,
-#       limit: "25"
-#     },
-#     headers: { 'Accept' => 'application/json' }
-#   })
-# end
-#
-# # def get_iteration_count(response)
-# #   response.parsed_response["totalResults"] / 25
-# # end
-#
-# def get_all_listings
-#   results = []
-#   5.times do
-#     response = make_request
-#     results += response.parsed_response["results"]
-#     @start += response.parsed_response["results"].length
-#   end
-#
-#   results
-# end
-#
-# get_all_listings.each do |listing|
-#   p listing["company"]
-#   Listing.create!(
-#     api_source: "Indeed",
-#     indeed_key: listing["jobkey"],
-#     user_id: 1,
-#     company: Company.find_by(name: listing["company"].downcase.titleize) ? Company.find_by(name: listing["company"].downcase.titleize) : Company.find_by(id:1),
-#     active: true,
-#     job_title: listing["jobtitle"],
-#     listing_company: listing["source"],
-#     location: listing["formattedLocation"],
-#     date_posted: listing["date"],
-#     snippet: listing["snippet"],
-#     url: listing["url"],
-#     latitude: listing["latitude"],
-#     longitude: listing["longitude"]
-#   )
-# end
+
+[{
+  subject: "Tier 2 Visa Info",
+  body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  user_id: 1
+}].each do |post|
+  Post.create!(post)
+end
+
+[{
+  body: "Comment here for further questions! :)",
+  user_id: 1,
+  post_id: 1
+}].each do |comment|
+  Comment.create!(comment)
+end
+
+
+@start = 0
+@results = {}
+
+def make_request
+  HTTParty.get("http://api.indeed.com/ads/apisearch?&l=&sort=&radius=&st=&fromage=&filter=&latlong=1&&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2", {
+    query: {
+      format: "json",
+      publisher: "4374475886375953",
+      q: "((developer or engineer or designer or server or stack or http) and (web or website or html or css or javascript or jquery or react or java or ruby or python or or php or sql or angular)) and company:(#{@companies_as_query})",
+      jt: "fulltime",
+      co: "gb",
+      start: @start,
+      limit: "25"
+    },
+    headers: { 'Accept' => 'application/json' }
+  })
+end
+
+def get_iteration_count(response)
+  (response.parsed_response["totalResults"] / 25) + 1
+end
+
+def get_all_listings
+  results = []
+  get_iteration_count(make_request).times do
+    response = make_request
+    results += response.parsed_response["results"]
+    @start += response.parsed_response["results"].length
+    p @start
+  end
+
+  results
+end
+
+get_all_listings.each do |listing|
+  Listing.create!(
+    api_source: "Indeed",
+    indeed_key: listing["jobkey"],
+    user_id: 1,
+    company: Company.find_by(name: listing["company"].downcase.titleize) ? Company.find_by(name: listing["company"].downcase.titleize) : Company.find_by(id:1),
+    active: true,
+    job_title: listing["jobtitle"],
+    listing_company: listing["source"],
+    location: listing["formattedLocation"],
+    date_posted: listing["date"],
+    snippet: listing["snippet"].gsub!(/<\w>/, "").gsub!(/<\/\w>/, ""),
+    # snippet: listing["snippet"].gsub(/<\w>/g, "")..gsub! /\bword\b/, '',
+    url: listing["url"],
+    latitude: listing["latitude"],
+    longitude: listing["longitude"]
+  )
+end

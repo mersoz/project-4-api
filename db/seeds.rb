@@ -1,6 +1,6 @@
 hundred_companies = [
   {
-    name: "Unlisted companies",
+    name: "-Unmatched-",
     website: "www.google.com",
     description: ""
   }, {
@@ -501,7 +501,6 @@ hundred_companies = [
   }
 ]
 
-
 @companies_as_query = hundred_companies.map { |e| e[:name].include?(" ") ? "(#{e[:name]})" : e[:name] }.join(" or ")
 
 [User, Company, Listing, Post, Comment].each do |model|
@@ -527,6 +526,18 @@ end
 
 [{
   subject: "Tier 2 Visa Info",
+  body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  user_id: 1
+}, {
+  subject: "Low-effort Networking",
+  body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  user_id: 1
+}, {
+  subject: "Interview Tips",
+  body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  user_id: 1
+}, {
+  subject: "Culture fit at the office",
   body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   user_id: 1
 }].each do |post|
@@ -588,7 +599,6 @@ get_all_listings.each do |listing|
     location: listing["formattedLocation"],
     date_posted: listing["date"],
     snippet: listing["snippet"].gsub!(/<\w>/, "").gsub!(/<\/\w>/, ""),
-    # snippet: listing["snippet"].gsub(/<\w>/g, "")..gsub! /\bword\b/, '',
     url: listing["url"],
     latitude: listing["latitude"],
     longitude: listing["longitude"]

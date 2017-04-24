@@ -510,7 +510,7 @@ class IndeedController < ApplicationController
     response = HTTParty.get("#{base_url}", {
       query: {
         format: "json",
-        publisher: "4374475886375953",
+        publisher: ENV["INDEED_PUBLISHER_KEY"],
         # st: "employer",
         q: "((developer or engineer or designer or server or stack or http) and (web or website or html or css or javascript or jquery or react or java or ruby or python or or php or sql or angular)) and company:(#{companies_as_query})",
         # l: "London",

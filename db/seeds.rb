@@ -560,7 +560,7 @@ def make_request
   HTTParty.get("http://api.indeed.com/ads/apisearch?&l=&sort=&radius=&st=&fromage=&filter=&latlong=1&&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2", {
     query: {
       format: "json",
-      publisher: "4374475886375953",
+      publisher: ENV["INDEED_PUBLISHER_KEY"],
       q: "((developer or engineer or designer or server or stack or http) and (web or website or html or css or javascript or jquery or react or java or ruby or python or or php or sql or angular)) and company:(#{@companies_as_query})",
       jt: "fulltime",
       co: "gb",

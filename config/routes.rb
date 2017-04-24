@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     resources :users
 
     get 'indeed_listings', to: 'indeed#indeed_listings'
-    get 'job_stats', to: 'glassdoor#job_stats'
+    get 'job_titles', to: 'glassdoor#job_titles'
+    get 'companiesShow', to: 'glassdoor#company_info'
     post 'register', to: 'authentications#register'
     post 'login', to: 'authentications#login'
   end

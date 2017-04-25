@@ -1,6 +1,6 @@
 class GlassdoorController < ApplicationController
   def job_titles
-    base_url = "http://api.glassdoor.com/api/api.htm?&userip=0.0.0.0&useragent="
+    base_url = "http://api.glassdoor.com/api/api.htm"
 
     response = HTTParty.get("#{base_url}", {
       query: {
@@ -12,7 +12,9 @@ class GlassdoorController < ApplicationController
         country: "United+Kingdom",
         jc: "29",
         returnJobTitles: "true",
-        admLevelRequested: "2"
+        admLevelRequested: "2",
+        userip: "0.0.0.0"
+
       },
       headers: { 'Accept' => 'application/json' }
     })
@@ -20,9 +22,9 @@ class GlassdoorController < ApplicationController
     render json: response, status: :ok if response
   end
 
-  def company_info(company_name)
+  def company_info
     puts params
-    base_url = "http://api.glassdoor.com/api/api.htm?&userip=0.0.0.0&useragent="
+    base_url = "http://api.glassdoor.com/api/api.htm"
 
     response = HTTParty.get("#{base_url}", {
       query: {
@@ -33,7 +35,8 @@ class GlassdoorController < ApplicationController
         action: "employers",
         country: "United+Kingdom",
         admLevelRequested: "2",
-        q: "#{company_name}"
+        q: params[:q],
+        userip: "0.0.0.0"
       },
       headers: { 'Accept' => 'application/json' }
     })

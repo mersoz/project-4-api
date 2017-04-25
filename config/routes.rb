@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
     get 'indeed_listings', to: 'indeed#indeed_listings'
     get 'job_titles', to: 'glassdoor#job_titles'
-    get 'companiesShow', to: 'glassdoor#company_info'
+    get 'company_info', to: 'glassdoor#company_info'
     post 'register', to: 'authentications#register'
     post 'login', to: 'authentications#login'
   end

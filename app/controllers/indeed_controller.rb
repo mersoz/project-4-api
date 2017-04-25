@@ -302,7 +302,7 @@ class IndeedController < ApplicationController
         careers_url: "www.cloudreach.com/gb-en/careers",
         description: "A global cloud consultancy & operational services provider with premier partner status with AWS, Google & a growing force within the Salesforce.com community."
       }, {
-        name: "Funding Circle Uk",
+        name: "Funding Circle",
         website: "www.fundingcircle.com/uk",
         careers_url: "www.fundingcircle.com/blog/jobs",
         description: "Funding Circle is the leading online marketplace for business loans, where people and organisations can directly lend to small businesses."

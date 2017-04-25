@@ -300,7 +300,7 @@ hundred_companies = [
     careers_url: "www.cloudreach.com/gb-en/careers",
     description: "A global cloud consultancy & operational services provider with premier partner status with AWS, Google & a growing force within the Salesforce.com community."
   }, {
-    name: "Funding Circle Uk",
+    name: "Funding Circle",
     website: "www.fundingcircle.com/uk",
     careers_url: "www.fundingcircle.com/blog/jobs",
     description: "Funding Circle is the leading online marketplace for business loans, where people and organisations can directly lend to small businesses."
@@ -525,19 +525,20 @@ hundred_companies.each do |company|
 end
 
 [{
-  subject: "Tier 2 Visa Info",
+  subject: "Tier 2 (General) Visa Info",
+  body: "You can apply for a Tier 2 visa if you’ve been offered a skilled job in the UK
+and you’re from outside the European Economic Area (EEA) and Switzerland. You need a certificate of sponsorship from a licensed sponsor before you apply.You can apply up to 3 months before your start date. You should get a decision within 3 weeks. You can stay for a maximum of 5 years and 14 days, or the time given on your certificate of sponsorship plus 1 month, whichever is shorter.",
+  user_id: 1
+}, {
+  subject: "Networking Tips",
+  body: "Arrive early before people settle into groups. Smile to ease your jitters. Positive attitude. Don't wait to be approached. Start a conversation with easy questions and topics. Make others feel special. Look them in the eye, repeat their name, listen. Build relationships. Make conversation, be a good company. Prep elevator pitch and projects. Share your passion. Leave a lasting impression with your enthusiasm for your product or service. Follow up with personal message within 48 hours!",
+  user_id: 1
+}, {
+  subject: "No-stress Interview",
   body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   user_id: 1
 }, {
-  subject: "Low-effort Networking",
-  body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  user_id: 1
-}, {
-  subject: "Interview Tips",
-  body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  user_id: 1
-}, {
-  subject: "Culture fit at the office",
+  subject: "Culture fit at the start-ups?",
   body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   user_id: 1
 }].each do |post|

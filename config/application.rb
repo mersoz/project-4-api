@@ -31,7 +31,7 @@ module Project4
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins ['localhost:7000', 'hidden-garden-77540.herokuapp.com']
+        origins ['localhost:7000', 'legalalien.herokuapp.com']
         resource '*', :headers => :any, :methods => [:get, :post, :put, :options, :delete]
       end
     end
